@@ -1,1 +1,1 @@
-This is the web app that runs on my home server. The web app simply hosts a stylized webpage with a brief introduction and description of my home server and the processes involved with running and maintaining it.
+This is the python(flask)-based web app that runs on my home server. The web app simply hosts a stylized webpage with a brief introduction and description of my home server and the processes involved with running and maintaining it.
