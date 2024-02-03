@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Server Central</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #121212;
+            /* Dark background color */
+            color: #ffffff;
+            /* Light text color */
+        }
+
+        section {
+            border: 1px solid #444;
+            /* Dark border color */
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #1f1f1f;
+            /* Dark section background color */
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #ffffff;
+            /* Light heading text color */
+        }
+
+        blockquote {
+            border-left: 5px solid #61dafb;
+            /* Accent color for blockquote */
+            background-color: #2d2d2d;
+            /* Dark blockquote background color */
+            color: #ffffff;
+            /* Light blockquote text color */
+            padding: 10px;
+        }
+
+        a {
+            color: #61dafb;
+            /* Accent color for links */
+        }
+
+        a:hover {
+            color: #3498db;
+            /* Hover color for links */
+        }
+
+        .btn-primary {
+            background-color: #61dafb;
+            /* Accent color for buttons */
+            border-color: #61dafb;
+        }
+
+        .btn-primary:hover {
+            background-color: #3498db;
+            /* Hover color for buttons */
+            border-color: #3498db;
+        }
+    </style>
+</head>
+
+<body class="container">
+    <header class="text-center my-5">
+        <h1 class="display-3">My Home Server Central</h1>
+    </header>
+    <section>
+	<h5>Overview</h5>
+	<p>
+	I'm Matteo De Vellis and this website is a brief overview of one of my most exhaustive projects; my home server. Below you will find
+	an explanation of how the server works, the processes involved with running and maintaining it as well as what kind of applications I run
+	on my virtual powerhouse. 
+	</p>
+    </section>
+    <section>
+        <h5> Personal Server Infrastructure Overview </h5>
+        <p>
+            My server setup is tailored for a robust and flexible computing environment utilizing Linux Containers
+            (LXC). Each application runs within its dedicated LXC, ensuring optimal resource utilization and enhancing
+            overall system stability. Notable applications hosted on my server include Home Assistant.
+        </p>
+        <ul>
+	    <li>This Website: Implemented and hosted this website entirely on my home server, accessible through a meticulously configured nginx reverse proxy for enhanced security and performance.</li>
+            <li>Home Assistant: Self-hosted smart home hub/server for seamless integration and automation of smart devices, enhancing control and monitoring capabilities.</li>
+            <li>Plex: Self-hosted video streaming platform enabling high-quality Blu-Ray rips playback on various devices, including phones, laptops, streaming boxes etc.</li>
+            <li>MotionEye: Self-hosted security and surveillance server providing comprehensive monitoring and alert systems for enhanced security measures.</li>
+            <li>FileBrowser: Self-hosted cloud drive using FileBrowser for secure storage and management of personal files, ensuring data accessibility and confidentiality.</li>
+        </ul>
+        <p>
+	    Each service/application is equipped with redundancy and fallback protocols to mitigate
+            the impact of unforeseen events such as power loss or data corruption.
+        </p>
+        <h5> LXC and Proxmox Integration </h5>
+
+        <p>
+            I leverage Linux Containers (LXC), a versatile technology compatible with various Linux distributions.
+            Proxmox, serving as a robust hypervisor, is optimized not only for LXC but also for fully-fledged Virtual
+            Machines
+            (VMs). Proxmox facilitates automated backup and snapshots of both LXC and VM instances, stored in designated
+            storage pools.
+        </p>
+
+        <p>
+            The primary storage pool consists of 4TB WD Red Plus drives configured in a ZFS storage pool using the ZFS
+            equivalent of Raid 5, known as "Raidz1." This setup ensures data integrity even if a drive fails, providing
+            a resilient storage foundation.
+        </p>
+
+        <h5> Redundancy, Snapshot, and Backup Strategy </h5>
+
+        <p>
+            To enhance data security, each LXC undergoes a snapshot once a week, capturing the current state of each
+            application. Additionally, my applications are backed up to a redundant 5x 4TB array, also running in a Raid
+            5 configuration, on a separate machine. Automatic monthly mirroring of the primary server's storage pool to
+            this backup array further fortifies data redundancy.
+        </p>
+        <p>
+            While industry-standard practices, such as the "3, 2, 1 backup" rule, can be cost-prohibitive for individual
+            setups, I've implemented an effective alternative. Backblaze, a cloud backup service, serves as an offsite
+            backup solution. For a monthly fee of $10, coupled with a recovery fee based on actual data retrieval,
+            Backblaze offers an economical yet reliable safeguard against unforeseen data loss.
+        </p>
+        <p>
+            My commitment to data integrity and security is paramount, and my server architecture reflects this
+            dedication through a thoughtful combination of local redundancy, snapshots, and cloud-based backup
+            solutions.
+        </p>
+
+    </section>
+    <section>
+        <h6>Server Hardware Specs</h6>
+        <ul>
+            <li>CPU: AMD Ryzen 7 2700 8-core 16-thread</li>
+            <li>Storage: 250G Samsung 960 Evo NVME PCIe 3.0 | 5x 4TB WD Red Plus Drives</li>
+            <li>RAM: 32GB DDR4 2666MHz Memory</li>
+            <li>GPU: Geforce GTX 1650 4GB GDDR5</li>
+            <li>Motherboard: Asus ROG x570-e Motherboard</li>
+        </ul>
+        <h6>Additional Specs</h6>
+        <ul>
+            <li>OS: Proxmox 8.0 Debian 12 "Bookworm" based with Linux kernel v6.2</li>
+            <li>IP-KVM: PiKVM (Raspberry Pi 4 based IP KVM running PiKVM OS)</li>
+            <li>PSU: Seasonic Focus Plus 650w Platinum</li>
+            <li>Case: Antec VSK4000E 8-bay Server Case</li>
+        </ul>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
